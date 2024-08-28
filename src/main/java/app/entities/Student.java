@@ -23,6 +23,4 @@ public class Student{
     private LocalDate birthdate;
 
 
-
-
 }

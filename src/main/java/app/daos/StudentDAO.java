@@ -5,8 +5,11 @@ import app.entities.Person;
 import app.entities.Student;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.TypedQuery;
 
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class StudentDAO implements IDAO<Student>{
 
@@ -21,7 +24,11 @@ public class StudentDAO implements IDAO<Student>{
 
     @Override
     public Set<Student> getAll() {
-        return null;
+        try (EntityManager em = emf.createEntityManager()) {
+            TypedQuery<Student> query = em.createQuery("SELECT u from Student u", Student.class);
+            List<Student> studentList = query.getResultList();
+            return studentList.stream().collect(Collectors.toSet());
+        }
     }
 
     @Override
