@@ -14,7 +14,7 @@ public class Main {
 
         StudentDAO studentDAO = new StudentDAO();
 
-        studentDAO.create(
+        /*studentDAO.create(
                 Student.builder()
                         .name("John")
                         .number(84848484)
@@ -22,7 +22,18 @@ public class Main {
                         .address("adadw")
                         .birthdate(LocalDate.of(2001,04,29))
                         .build()
+        );*/
+        studentDAO.update(
+                Student.builder()
+                        .id(1)
+                        .name("Ali")
+                        .number(20202020)
+                        .email("ali@emial.dk")
+                        .address("valby langgade 20")
+                        .birthdate(LocalDate.of(2001,01,01))
+                        .build()
         );
+
         studentDAO.getAll().forEach(System.out::println);
 
         /*
@@ -43,7 +54,6 @@ public class Main {
                         .build()
         );
         personDAO.getAll().forEach(System.out::println);
-
         //Delete person
       personDAO.delete(
                 Person.builder()

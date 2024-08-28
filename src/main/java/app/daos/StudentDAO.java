@@ -11,10 +11,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class StudentDAO implements IDAO<Student>{
+public class StudentDAO implements IDAO<Student> {
 
     private EntityManagerFactory emf = HibernateConfig.getEntityManagerFactory();
-
 
 
     @Override
@@ -42,7 +41,15 @@ public class StudentDAO implements IDAO<Student>{
 
     @Override
     public void update(Student student) {
+        try (EntityManager em = emf.createEntityManager()) {
 
+            /*Student found = em.find(Student.class, student.getId());
+            if(student.getName() != null ? found.getName().equals(student.getName()) : )*/
+
+            em.getTransaction().begin();
+            em.merge(student); //merge found bagefter
+            em.getTransaction().commit();
+        }
     }
 
     @Override
