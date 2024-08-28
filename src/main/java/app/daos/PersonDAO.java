@@ -16,6 +16,9 @@ public class PersonDAO {
             em.persist(person);
 
             em.getTransaction().commit();
+
+
+
         }
     }
 }
