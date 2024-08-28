@@ -1,6 +1,7 @@
 package app;
 
 
+import app.entities.Course;
 import app.entities.Person;
 import app.entities.Student;
 import jakarta.persistence.EntityManagerFactory;
@@ -37,7 +38,7 @@ public class HibernateConfig {
     private static void getAnnotationConfiguration(Configuration configuration) {
         configuration.addAnnotatedClass(Person.class);
         configuration.addAnnotatedClass(Student.class);
-
+        configuration.addAnnotatedClass(Course.class);
     }
 
     private static EntityManagerFactory createEMF(boolean forTest) {
