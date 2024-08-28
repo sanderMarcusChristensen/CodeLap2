@@ -1,6 +1,7 @@
 package app;
 
 
+import app.entities.Person;
 import jakarta.persistence.EntityManagerFactory;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -33,7 +34,7 @@ public class HibernateConfig {
     }
     // TODO: IMPORTANT: Add Entity classes here for them to be registered with Hibernate
     private static void getAnnotationConfiguration(Configuration configuration) {
-        configuration.addAnnotatedClass(User.class);
+        configuration.addAnnotatedClass(Person.class);
     }
 
     private static EntityManagerFactory createEMF(boolean forTest) {
@@ -66,7 +67,7 @@ public class HibernateConfig {
 
 
     private static String getDBName() {
-        return "jpaday";
+        return "jpademo";
     }
     private static Properties setBaseProperties(Properties props){
         props.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
